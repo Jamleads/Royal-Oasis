@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Royal Oasis Management Group</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --navy: #1d3c6a;
+        --sky-blue: #4aa9e0;
+        --gray: #7e8c97;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: var(--white);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Header/Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--sky-blue) 100%
+        );
+        color: var(--white);
+        text-align: center;
+        padding: 80px 20px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 1px,
+          transparent 1px
+        );
+        background-size: 50px 50px;
+        animation: drift 60s linear infinite;
+        opacity: 0.3;
+      }
+
+      @keyframes drift {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(50px, 50px);
+        }
+      }
+
+      .logo {
+        max-width: 200px;
+        margin-bottom: 30px;
+        animation: fadeInDown 1s ease-out;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+        animation: fadeInDown 1s ease-out 0.2s both;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero .tagline {
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        opacity: 0.95;
+        animation: fadeInDown 1s ease-out 0.4s both;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 15px 40px;
+        background: var(--white);
+        color: var(--navy);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        animation: fadeInUp 1s ease-out 0.6s both;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(74, 169, 224, 0.4);
+        background: var(--sky-blue);
+        color: var(--white);
+      }
+
+      /* Sections */
+      section {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      section:nth-child(even) {
+        background: #f8f9fa;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        color: var(--navy);
+        margin-bottom: 30px;
+        text-align: center;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--navy), var(--sky-blue));
+        border-radius: 2px;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 20px;
+        text-align: center;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Services Grid */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .service-card {
+        background: var(--white);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(74, 169, 224, 0.2);
+        border-color: var(--sky-blue);
+      }
+
+      .service-card h3 {
+        color: var(--navy);
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+      }
+
+      .service-card p {
+        color: var(--gray);
+        font-size: 1rem;
+        text-align: left;
+      }
+
+      /* Book Section */
+      .book-section {
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--sky-blue) 100%
+        ) !important;
+        color: var(--white);
+        text-align: center;
+        border-radius: 20px;
+        padding: 60px 40px;
+        margin: 80px auto;
+        max-width: 900px;
+      }
+
+      .book-section h2 {
+        color: var(--white);
+      }
+
+      .book-section h2::after {
+        background: var(--white);
+      }
+
+      .book-section p {
+        color: var(--white);
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      /* Contact Section */
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+      }
+
+      .contact-info p {
+        font-size: 1.2rem;
+        color: var(--navy);
+        margin: 10px 0;
+      }
+
+      .contact-info a {
+        color: var(--sky-blue);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .contact-info a:hover {
+        color: var(--navy);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--navy);
+        color: var(--white);
+        text-align: center;
+        padding: 30px 20px;
+        font-size: 0.95rem;
+      }
+
+      /* Animations */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero .tagline {
+          font-size: 1rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        section {
+          padding: 50px 20px;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Scroll animation trigger */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Hero Section -->
+    <header class="hero">
+      <!-- <img src="./asset/logo.jpeg" alt=""> -->
+      <img
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%231D3C6A' width='200' height='200' rx='20'/%3E%3Ctext x='100' y='110' font-family='Arial' font-size='60' font-weight='bold' fill='%234AA9E0' text-anchor='middle'%3ERO%3C/text%3E%3Ctext x='100' y='140' font-family='Arial' font-size='16' fill='%23FFFFFF' text-anchor='middle'%3EMANAGEMENT%3C/text%3E%3C/svg%3E"
+        alt="Royal Oasis Management Group Logo"
+        class="logo"
+      />
+      <h1>Royal Oasis Management Group</h1>
+      <p class="tagline">Consulting • Training • Management Solutions</p>
+      <a href="https://royaloasis.as.me/" class="cta-button" target="_blank"
+        >Book a Consultation</a
+      >
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="animate-on-scroll">
+      <h2>About Us</h2>
+      <p>
+        Royal Oasis Management Group provides professional consulting, training,
+        and management services to help individuals and businesses achieve their
+        goals.
+      </p>
+      <p>
+        Our mission is to deliver tailored solutions with professionalism,
+        confidentiality, and long-term success in mind.
+      </p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="animate-on-scroll">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Consulting Services</h3>
+          <p>Guidance and support for personal and business goals</p>
+        </div>
+        <div class="service-card">
+          <h3>Training Programs</h3>
+          <p>Educational sessions designed to build skills and confidence</p>
+        </div>
+        <div class="service-card">
+          <h3>Management Solutions</h3>
+          <p>Tools, resources, and structured support for growth</p>
+        </div>
+        <div class="service-card">
+          <h3>Client Success Planning</h3>
+          <p>Customized plans to help you move forward effectively</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Book Section -->
+    <section class="book-section animate-on-scroll">
+      <h2>Take the first step today!</h2>
+      <p>
+        Schedule an Initial Consultation to review your goals and learn how we
+        can best assist you.
+      </p>
+      <a href="https://royaloasis.as.me/" class="cta-button" target="_blank"
+        >Schedule Now</a
+      >
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="animate-on-scroll">
+      <h2>Contact Us</h2>
+      <div class="contact-info">
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:info@royaloasismanagement.com"
+            >info@royaloasismanagement.com</a
+          >
+        </p>
+        <p><strong>Location:</strong> Texas, USA</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Royal Oasis Management Group. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      // Smooth scroll animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
